@@ -14,6 +14,8 @@ namespace LIDER.Migrations
             Sql("INSERT INTO CATEGORIES (Name,Hide,Ranking) VALUES ('Pant',0,5)");
             Sql("INSERT INTO CATEGORIES (Name,Hide,Ranking) VALUES ('Shoes',0,6)");
             Sql("INSERT INTO CATEGORIES (Name,Hide,Ranking) VALUES ('Accessories',0,7)");
+
+
         }
         public override void Down()
         {

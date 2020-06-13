@@ -186,6 +186,10 @@
     <Compile Include="Migrations\202006121512587_SeedCategory.Designer.cs">
       <DependentUpon>202006121512587_SeedCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006130207442_SeedProduct.cs" />
+    <Compile Include="Migrations\202006130207442_SeedProduct.Designer.cs">
+      <DependentUpon>202006130207442_SeedProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -231,6 +235,26 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Hoodie\17.jpg" />
+    <Content Include="Content\Images\Hoodie\18.jpg" />
+    <Content Include="Content\Images\Hoodie\19.jpg" />
+    <Content Include="Content\Images\Hoodie\20.jpg" />
+    <Content Include="Content\Images\Jacket\10.jpg" />
+    <Content Include="Content\Images\Jacket\11.jpg" />
+    <Content Include="Content\Images\Jacket\12.jpg" />
+    <Content Include="Content\Images\Jacket\9.jpg" />
+    <Content Include="Content\Images\Pant\13.jpg" />
+    <Content Include="Content\Images\Pant\14.jpg" />
+    <Content Include="Content\Images\Pant\15.jpg" />
+    <Content Include="Content\Images\Pant\16.jpg" />
+    <Content Include="Content\Images\Shirt\5.jpg" />
+    <Content Include="Content\Images\Shirt\6.jpg" />
+    <Content Include="Content\Images\Shirt\7.jpg" />
+    <Content Include="Content\Images\Shirt\8.jpg" />
+    <Content Include="Content\Images\T-Shirt\1.jpg" />
+    <Content Include="Content\Images\T-Shirt\2.jpg" />
+    <Content Include="Content\Images\T-Shirt\3.jpg" />
+    <Content Include="Content\Images\T-Shirt\4.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -293,6 +317,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Accessories\" />
+    <Folder Include="Content\Images\Shoes\" />
     <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006121512587_SeedCategory.resx">
       <DependentUpon>202006121512587_SeedCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006130207442_SeedProduct.resx">
+      <DependentUpon>202006130207442_SeedProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
