@@ -114,12 +114,12 @@
                 <a href="#" class="list-group-item active"><strong>CATEGORY</strong></a>
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <a style="text-transform: uppercase" href="/Products/ViewAll">View All</a>
+                        <a style="text-transform: uppercase" href="/Products/Categories/View-All">View All</a>
                     </li>
                     @foreach (var item in Model.Categories)
                     {
                         <li class="list-group-item">
-                            <a style="text-transform: uppercase" href="#">@item.Name</a>
+                            <a style="text-transform: uppercase" href="/Products/Categories/@item.Name">@item.Name</a>
                         </li>
                     }
                 </ul>
@@ -221,7 +221,7 @@
             <!-- /.row -->
             <div class="row">
                 <div  class="text-center">
-                    <a href="Products/ViewAll" class="btn btn-danger btn-lg" role="button">VIEW ALL</a>
+                    <a href="/Products/Categories/View-All" class="btn btn-danger btn-lg" role="button">VIEW ALL</a>
                 </div>
                 
             </div>

@@ -1,14 +1,15 @@
 ﻿@{
-    ViewBag.Title = "View All";
+    ViewBag.Title = "Categories";
 }
 <div>
-    <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li class="active">Products</li>
-        <li class="active">View All</li>
-
-    </ol>
+        <ol class="breadcrumb">
+            <li class="active">Home</li>
+            <li class="active">Products</li>
+            <li class="active">Categories</li>
+            <li class="active">@Model.CurrentPage</li>
+        </ol>
 </div>
+
 <div class="container">
     <!-- /.row -->
     <div class="row">
@@ -17,12 +18,12 @@
                 <a href="#" class="list-group-item active"><strong>CATEGORY</strong></a>
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <a style="text-transform: uppercase" href="ViewAll">View All</a>
+                        <a style="text-transform: uppercase" href="/Products/Categories/View-All">View-All</a>
                     </li>
                     @foreach (var item in Model.Categories)
                     {
                         <li class="list-group-item">
-                            <a style="text-transform: uppercase" href="#">@item.Name</a>
+                            <a style="text-transform: uppercase" href="/Products/Categories/@item.Name">@item.Name</a>
                         </li>
                     }
                 </ul>
@@ -32,7 +33,7 @@
             <div class="text-center">
                 @{
                     int ad = 0;
-                    foreach (var item in Model.Products)
+                    foreach (var item in Model.Prod)
                     {
                         if (ad < 2)
                         {
@@ -94,7 +95,7 @@
                     int pd = 0;
                     foreach (var i in Model.Products)
                     {
-                        if (pd < 9)
+                        if (pd < 30)
                         {
                             <div class="col-md-4 text-center col-sm-6 col-xs-6">
                                 <div class="thumbnail product-box">
