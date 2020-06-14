@@ -1,9 +1,9 @@
-﻿@model LIDER.ViewModels.GetView
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 <div class="container">
     <div class="row">
+        <!-- /.col -->
         <div class="col-md-9">
             <div class="well well-lg offer-box text-center">
                 Today's Offer : &nbsp; <span class="glyphicon glyphicon-cog"></span>&nbsp;40 % off  on purchase of $ 2,000 and above till 24 Jun !
@@ -26,7 +26,7 @@
                                             dem++;
                                             <li>
                                                 <a href="#">
-                                                    <img src="@Url.Content(u.Img)" alt="@u.Name"><h4>@u.Name</h4>
+                                                    <img src="@Url.Content(u.Img)" alt="@u.Name"><h5>@u.Name</h5>
                                                 </a>
                                             </li>
                                         }
@@ -51,62 +51,59 @@
             <br />
         </div>
         <!-- /.col -->
-
-
-
-
-
-        <div class="col-md-3 text-center">
+        <div class="col-md-3">
             @{
                 int bs = 0;
                 foreach (var item in Model.Products)
                 {
                     if (bs < 1)
                     {
-                        if (item.Ranking == 1)
+                        if (item.Ranking == 0)
                         {
-                        <div class=" col-md-12 col-sm-6 col-xs-6">
-                            <div class="offer-text">
-                                BEST-SELLING
-                            </div>
-                            <div class="thumbnail product-box">
-                                <img src="@item.Img" alt="" />
-                                <div class="caption">
-                                    <h3><a href="#">@item.Name </a></h3>
-                                    <br />
-                                    <p><strong>PRICE : @item.Price VND</strong>  </p>
-                                    <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                            <div class=" text-center">
+                                <div class="offer-text2">
+                                    HOT
                                 </div>
-                            </div>
-                            <!-- /.div -->
-                            <div class="well well-lg offer-box offer-colors">
-
-
-                                <span class="glyphicon glyphicon-star-empty"></span>25 % off  , GRAB IT
-                                <br />
-                                <br />
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-                                         style="width: 70%">
-                                        <span class="sr-only">70% Complete (success)</span>
-                                        2hr 35 mins left
+                                <div class="thumbnail product-box">
+                                    <img src="@item.Img" alt="" />
+                                    <div class="caption">
+                                        <h5><a href="#">@item.Name </a></h5>                                        
+                                        <h5><strong>$@item.Price</strong></h5>
+                                        <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
                                     </div>
                                 </div>
-                                <a href="#">Click here to know more </a>
+                                <!-- /.div -->
+                                <!-- /.div -->
+
                             </div>
-                            <!-- /.div -->
-
-                        </div>
-
+                            <div class=" text-center">
+                                <div class="well well-lg offer-box offer-colors">
+                                    
+                                    <span class="glyphicon glyphicon-star-empty"></span>25 % off  , GRAB IT
+                                    <br />
+                                    <br />
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 70%">
+                                            <span class="sr-only">70% Complete (success)</span>
+                                            2hr 35 mins left
+                                        </div>
+                                    </div>
+                                    <a href="#">Click here to know more </a>
+                                    
+                                    <br />
+                                </div>
+                            </div>
                             bs++;
                         }
                     }
 
                 }
             }
-        </div>
-        
 
+
+
+        </div>
         <!-- /.col -->
     </div>
 
@@ -114,22 +111,57 @@
     <div class="row">
         <div class="col-md-3">
             <div>
-                <a href="#" class="list-group-item active">
-                    CATEGORY
-                </a>
+                <a href="#" class="list-group-item active"><strong>CATEGORY</strong></a>
                 <ul class="list-group">
+                    <li class="list-group-item">
+                        <a style="text-transform: uppercase" href="/Products/ViewAll">View All</a>
+                    </li>
                     @foreach (var item in Model.Categories)
                     {
                         <li class="list-group-item">
                             <a style="text-transform: uppercase" href="#">@item.Name</a>
                         </li>
                     }
-
-
                 </ul>
             </div>
+
             <!-- /.div -->
-           
+            <div class="text-center">
+                @{
+                    int ad = 0;
+                    foreach (var item in Model.Products)
+                    {
+                        if (ad < 2)
+                        {
+                            if (item.Ranking == -1)
+                            {
+                                <div>
+                                    <div class="offer-text2">
+                                        HOT
+                                    </div>
+                                    <div class="thumbnail product-box">
+                                        <img src="@item.Img" alt="" />
+                                        <div class="caption">
+                                            <h5><a href="#">@item.Name </a></h5>
+                                            <h5><strong>$@item.Price</strong></h5>
+                                            <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                                        </div>
+                                    </div>
+                                    <!-- /.div -->
+
+
+                                </div>
+
+                                ad++;
+                            }
+                        }
+
+                    }
+                }
+
+            </div>
+            <!-- /.div -->
+
         </div>
         <!-- /.col -->
         <div class="col-md-9">
@@ -139,7 +171,6 @@
                     <li class="active">Products</li>
                 </ol>
             </div>
-            <!-- /.div -->
             <div class="row">
                 <div class="btn-group alg-right-pad">
                     <button type="button" class="btn btn-default"><strong>1235  </strong>items</button>
@@ -152,63 +183,47 @@
                             <li><a href="#">By Price Low</a></li>
                             <li class="divider"></li>
                             <li><a href="#">By Price High</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">By Popularity</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">By Reviews</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
             <div class="row">
-                <div class="col-md-4 text-center col-sm-6 col-xs-6">
-                    <div class="thumbnail product-box">
-                        <img src="assets/img/dummyimg.png" alt="" />
-                        <div class="caption">
-                            <h3><a href="#">Samsung Galaxy </a></h3>
-                            <p>Price : <strong>$ 3,45,900</strong>  </p>
-                            <p><a href="#">Ptional dismiss button </a></p>
-                            <p>Ptional dismiss button in tional dismiss button in   </p>
-                            <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
-                        </div>
-                    </div>
-                </div>
                 <!-- /.col -->
-                <div class="col-md-4 text-center col-sm-6 col-xs-6">
-                    <div class="thumbnail product-box">
-                        <img src="assets/img/dummyimg.png" alt="" />
-                        <div class="caption">
-                            <h3><a href="#">Samsung Galaxy </a></h3>
-                            <p>Price : <strong>$ 3,45,900</strong>  </p>
-                            <p><a href="#">Ptional dismiss button </a></p>
-                            <p>Ptional dismiss button in tional dismiss button in   </p>
-                            <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4 text-center col-sm-6 col-xs-6">
-                    <div class="thumbnail product-box">
-                        <img src="assets/img/dummyimg.png" alt="" />
-                        <div class="caption">
-                            <h3><a href="#">Samsung Galaxy </a></h3>
-                            <p>Price : <strong>$ 3,45,900</strong>  </p>
-                            <p><a href="#">Ptional dismiss button </a></p>
-                            <p>Ptional dismiss button in tional dismiss button in   </p>
-                            <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
-                        </div>
-                    </div>
-                </div>
+                @{
+                    int pd = 0;
+                    foreach (var i in Model.Products)
+                    {
+                        if (pd < 9)
+                        {
+                            <div class="col-md-4 text-center col-sm-6 col-xs-6">
+                                <div class="thumbnail product-box">
+                                    <img src="@i.Img" alt="" />
+                                    <div class="caption">
+                                        <h5><a href="#">@i.Name </a></h5>
+                                        <h5><strong>$@i.Price</strong>  </h5>
+                                        <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            pd++;
+                        }
+
+                    }
+                }
+
+
                 <!-- /.col -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <ul class="pagination alg-right-pad">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
+                <div  class="text-center">
+                    <a href="Products/ViewAll" class="btn btn-danger btn-lg" role="button">VIEW ALL</a>
+                </div>
+                
             </div>
             <!-- /.row -->
         </div>
