@@ -57,5 +57,29 @@ namespace LIDER.Controllers
             };
             return View(viewModel);
         }
+
+        public ActionResult Details(int? id)
+        {
+            var getcategory = _dbContext.Categories
+              .ToList();
+            var getpro = _dbContext.Products
+                .Where(a => a.ProductID == id)
+                .ToList();
+            var getproduct = _dbContext.Products
+                .ToList();
+            if (getpro == null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = new GetView
+            {
+
+                Categories = getcategory,
+                Products = getproduct,
+                Pro = getpro
+            };
+            return View(viewModel);
+        }
+
     }
 }

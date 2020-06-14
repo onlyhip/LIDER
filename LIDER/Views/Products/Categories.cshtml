@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Categories";
+    ViewBag.Title = Model.CurrentPage;
 }
 <div>
         <ol class="breadcrumb">
@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-3">
             <div>
-                <a href="#" class="list-group-item active"><strong>CATEGORY</strong></a>
+                <a href="#" class="list-group-item active"><strong>CATEGORIES</strong></a>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <a style="text-transform: uppercase" href="/Products/Categories/View-All">View-All</a>
@@ -48,7 +48,7 @@
                                         <div class="caption">
                                             <h5><a href="#">@item.Name </a></h5>
                                             <h5><strong>$@item.Price</strong></h5>
-                                            <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                                            <p><a href="/Products/Details/@item.ProductID" class="btn btn-success" role="button">&ensp;Buy Now&ensp;</a> <a href="/Products/Details/@item.ProductID" class="btn btn-primary" role="button">See Details</a></p>
                                         </div>
                                     </div>
                                     <!-- /.div -->
@@ -103,7 +103,7 @@
                                     <div class="caption">
                                         <h5><a href="#">@i.Name </a></h5>
                                         <h5><strong>$@i.Price</strong>  </h5>
-                                        <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                                        <p><a href="/Products/Details/@i.ProductID" class="btn btn-success" role="button">&ensp;Buy Now&ensp;</a> <a href="/Products/Details/@i.ProductID" class="btn btn-primary" role="button">See Details</a></p>
                                     </div>
                                 </div>
                             </div>

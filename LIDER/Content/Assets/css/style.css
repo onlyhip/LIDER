@@ -99,6 +99,7 @@ a:hover {
 .btn {
     margin-bottom: 5px;
 }
+
 /*=======================================
   INDEX PAGE
 ==================================================*/
@@ -159,6 +160,10 @@ a:hover {
 /*=======================================
   SLIDER main-style.css Changes
 ==================================================*/
+img {
+    width: 70%;
+}
+
 .container {
     padding-right: 0px;
     padding-left: 0px;
@@ -168,15 +173,15 @@ a:hover {
 
 .mi-slider {
     margin-top: 0px;
-    height: 480px;
+    height: 405px;
 }
 
     .mi-slider nav {
-        top: 390px;
+        top: 300px;
     }
 
     .mi-slider ul {
-        bottom: 140px;
+        bottom: 160px;
     }
 
 .offer-text {
