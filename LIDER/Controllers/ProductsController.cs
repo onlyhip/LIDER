@@ -217,5 +217,49 @@ namespace LIDER.Controllers
             return RedirectToAction("ManageProducts", "Products");
         }
 
+        [Authorize]
+        public ActionResult DeleteProducts(int? id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("DeleteProducts");
+            }
+            var getproduct = _dbContext.Products
+             .Include(a => a.Category)
+             .Where(c => c.ProductID == id);
+
+            if (getproduct == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new ManageView
+            {
+                Categories = _dbContext.Categories.ToList(),
+                ProdDetails = getproduct.First()
+            };
+            return View(viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteProducts(ManageView mv)
+        {
+            if (!ModelState.IsValid)
+            {
+                mv.Categories = _dbContext.Categories.ToList();
+                return View("DeleteProducts", mv);
+            }
+            var pd = new Product
+            {
+                ProductID = mv.ProdDetails.ProductID
+            };
+            _dbContext.Products.Attach(pd);
+            _dbContext.Products.Remove(pd);
+            _dbContext.SaveChanges();
+            return RedirectToAction("ManageProducts", "Products");
+        }
+
     }
 }

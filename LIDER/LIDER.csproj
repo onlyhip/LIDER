@@ -322,6 +322,7 @@
     <Content Include="Views\Products\ManageProducts.cshtml" />
     <Content Include="Views\Products\DetailsProducts.cshtml" />
     <Content Include="Views\Products\EditProducts.cshtml" />
+    <Content Include="Views\Products\DeleteProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
