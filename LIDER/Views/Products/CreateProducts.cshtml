@@ -1,7 +1,7 @@
 ﻿@model LIDER.ViewModels.ProductCustom
 
 @{
-    ViewBag.Title = "CreateProducts";
+    ViewBag.Title = "Create Products";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
@@ -90,7 +90,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Categories, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
                 @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.Categories, "CategoryID", "Name"), "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.CategoryID)

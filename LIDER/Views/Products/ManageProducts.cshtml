@@ -1,82 +1,81 @@
-﻿@model IEnumerable<LIDER.Models.Product>
+﻿@model LIDER.ViewModels.ManageView
 
 @{
-    ViewBag.Title = "ManageProducts";
+    ViewBag.Title = "Manage Products";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
-<h2>Manage Products</h2>
+<h2>
+    MANAGE PRODUCTS
+</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<p>@Html.ActionLink("Create New", "CreateProducts")</p>
+
+
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Img)
+            Image
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Meta)
+            Size
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Size)
+            Color
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Color)
+            Hide
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hide)
+            Ranking
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ranking)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryID)
+            Categories
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td style="width:10%">
-            <img style="width:20%" src="@Url.Content(item.Img)"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Meta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hide)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ranking)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.ManageProd)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td style="width:30%">
+
+                <img style="width:40%" src="@Url.Content(item.Img)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hide)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ranking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProducts", new { id = item.ProductID }) |
+                @Html.ActionLink("Details", "DetailsProducts", new { id = item.ProductID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
 
 </table>

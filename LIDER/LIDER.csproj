@@ -200,6 +200,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\GetView.cs" />
+    <Compile Include="ViewModels\ManageView.cs" />
     <Compile Include="ViewModels\ProductCustom.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -317,8 +318,10 @@
     <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Products\Categories.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\ManageProducts.cshtml" />
     <Content Include="Views\Products\CreateProducts.cshtml" />
+    <Content Include="Views\Products\ManageProducts.cshtml" />
+    <Content Include="Views\Products\DetailsProducts.cshtml" />
+    <Content Include="Views\Products\EditProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

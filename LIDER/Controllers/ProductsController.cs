@@ -7,6 +7,8 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace LIDER.Controllers
 {
@@ -33,8 +35,8 @@ namespace LIDER.Controllers
                 .ToList();
 
             var getproduct = _dbContext.Products
-                .ToList(); 
-            
+                .ToList();
+
             if (id == "View-All")
             {
                 getproduct = _dbContext.Products
@@ -81,14 +83,25 @@ namespace LIDER.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public ActionResult ManageProducts()
         {
-            
+            if (!ModelState.IsValid)
+            {
+                return View("ManageProducts");
+            }
+
             var getproduct = _dbContext.Products
-                .ToList();
-            
-            return View(getproduct);
+               .Include(a => a.Category);
+
+            var viewModel = new ManageView
+            {
+                ManageProd = getproduct
+            };
+
+            return View(viewModel);
         }
+        [Authorize]
         public ActionResult CreateProducts()
         {
             var viewModel = new ProductCustom
@@ -96,14 +109,112 @@ namespace LIDER.Controllers
                 Categories = _dbContext.Categories.ToList()
             };
             return View(viewModel);
-            
-        }
-        [HttpPost, ActionName("CreateBook")]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateProducts(Product prod)
-        {
 
-            return RedirectToAction("ManageProducts","Products");
+        }
+        [Authorize]
+        [HttpPost, ActionName("CreateProducts")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateProducts(ProductCustom prod)
+        {
+            if (!ModelState.IsValid)
+            {
+                prod.Categories = _dbContext.Categories.ToList();
+                return View("CreateProducts", prod);
+            }
+
+            var pd = new Product
+            {
+                Name = prod.Name,
+                Price = prod.Price,
+                Img = prod.Img,
+                Description = prod.Description,
+                Meta = prod.Meta,
+                Size = prod.Size,
+
+                Color = prod.Color,
+                Hide = prod.Hide,
+                Ranking = prod.Ranking,
+                CategoryID = prod.CategoryID
+            };
+            _dbContext.Products.Add(pd);
+            _dbContext.SaveChanges();
+            return RedirectToAction("ManageProducts", "Products");
+        }
+
+        [Authorize]
+        public ActionResult DetailsProducts(int? id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("DetailsProducts");
+            }
+            var getproduct = _dbContext.Products
+             .Include(a => a.Category)
+             .Where(c => c.ProductID == id);
+
+            if (getproduct == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new ManageView
+            {
+                ProdDetails = getproduct.First()
+            };
+
+            return View(viewModel);
+        }
+        [Authorize]
+        public ActionResult EditProducts(int? id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("EditProducts");
+            }
+            var getproduct = _dbContext.Products
+             .Include(a => a.Category)
+             .Where(c => c.ProductID == id);
+
+            if (getproduct == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new ManageView
+            {
+                Categories = _dbContext.Categories.ToList(),
+                ProdDetails = getproduct.First()
+            };
+            return View(viewModel);
+        }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProducts(ManageView mv)
+        {
+            if (!ModelState.IsValid)
+            {
+                mv.Categories = _dbContext.Categories.ToList();
+                return View("EditProducts", mv);
+            }
+            var pd = new Product
+            {
+                ProductID = mv.ProdDetails.ProductID,
+                Name = mv.ProdDetails.Name,
+                Price = mv.ProdDetails.Price,
+                Img = mv.ProdDetails.Img,
+                Description = mv.ProdDetails.Description,
+                Meta = mv.ProdDetails.Meta,
+                Size = mv.ProdDetails.Size,
+                Color = mv.ProdDetails.Color,
+                Hide = mv.ProdDetails.Hide,
+                Ranking = mv.ProdDetails.Ranking,
+                CategoryID = mv.ProdDetails.CategoryID
+            };
+
+            _dbContext.Products.AddOrUpdate(pd);
+            _dbContext.SaveChanges();
+            return RedirectToAction("ManageProducts", "Products");
         }
 
     }
