@@ -81,5 +81,30 @@ namespace LIDER.Controllers
             return View(viewModel);
         }
 
+        public ActionResult ManageProducts()
+        {
+            
+            var getproduct = _dbContext.Products
+                .ToList();
+            
+            return View(getproduct);
+        }
+        public ActionResult CreateProducts()
+        {
+            var viewModel = new ProductCustom
+            {
+                Categories = _dbContext.Categories.ToList()
+            };
+            return View(viewModel);
+            
+        }
+        [HttpPost, ActionName("CreateBook")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateProducts(Product prod)
+        {
+
+            return RedirectToAction("ManageProducts","Products");
+        }
+
     }
 }
