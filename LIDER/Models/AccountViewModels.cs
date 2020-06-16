@@ -76,9 +76,22 @@ namespace LIDER.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "First Name")]
+
+        [Required]
+        [StringLength(255)]
+        public string FirstName { get; set; }
+        
+
+        [Required]
+        [StringLength(255)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
     }
 
     public class ResetPasswordViewModel

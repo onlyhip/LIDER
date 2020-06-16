@@ -83,7 +83,7 @@ namespace LIDER.Controllers
             return View(viewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult ManageProducts()
         {
             if (!ModelState.IsValid)
@@ -101,7 +101,8 @@ namespace LIDER.Controllers
 
             return View(viewModel);
         }
-        [Authorize]
+
+        [Authorize(Roles = "Admin")]
         public ActionResult CreateProducts()
         {
             var viewModel = new ProductCustom
@@ -111,7 +112,9 @@ namespace LIDER.Controllers
             return View(viewModel);
 
         }
-        [Authorize]
+
+
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("CreateProducts")]
         [ValidateAntiForgeryToken]
         public ActionResult CreateProducts(ProductCustom prod)
@@ -141,7 +144,7 @@ namespace LIDER.Controllers
             return RedirectToAction("ManageProducts", "Products");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult DetailsProducts(int? id)
         {
             if (!ModelState.IsValid)
@@ -164,7 +167,7 @@ namespace LIDER.Controllers
 
             return View(viewModel);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditProducts(int? id)
         {
             if (!ModelState.IsValid)
@@ -187,7 +190,9 @@ namespace LIDER.Controllers
             };
             return View(viewModel);
         }
-        [Authorize]
+
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditProducts(ManageView mv)
@@ -217,7 +222,7 @@ namespace LIDER.Controllers
             return RedirectToAction("ManageProducts", "Products");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteProducts(int? id)
         {
             if (!ModelState.IsValid)
@@ -241,7 +246,7 @@ namespace LIDER.Controllers
             return View(viewModel);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteProducts(ManageView mv)
